@@ -1,0 +1,26 @@
+{
+    "name": "guancheng/imager",
+    "description": "The package to compress and crop image.",
+    "keywords": ["imager"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Peter Lai",
+            "email": "alk03073135@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "require-dev": {
+        "mockery/mockery": "~0.9",
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "LGC\\Imager\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
