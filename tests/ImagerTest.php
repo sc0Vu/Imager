@@ -172,4 +172,112 @@ class ImagerTest extends PHPUnit_Framework_TestCase
         ]);
         $this->assertEquals(get_class($imager->getLibrary()), 'LGC\Imager\ImageMagickLibrary');
     }
+
+    /**
+     * Test should compress and crop png image using ImageMagickLibrary.
+     *
+     * @return void
+     */
+    public function testShouldCompressAndCropPNGImageImageMagickLibrary()
+    {
+        $imager = new Imager([
+            'library' => 'im',
+            'fileInfo' => [
+                'src' => __DIR__ . DIRECTORY_SEPARATOR . 'test.png',
+                'to' => __DIR__ . DIRECTORY_SEPARATOR . 'im.png',
+                'type' => 'png'
+            ]
+        ]);
+        $imager->compress(8);
+        $imager->crop([
+            'width' => 100,
+            'height' => 100,
+            'x' => 10,
+            'y' => 20
+        ]);
+        $this->assertTrue($imager->run());
+        $this->assertTrue(is_file(__DIR__ . DIRECTORY_SEPARATOR . 'im.png'));
+        unlink(__DIR__ . DIRECTORY_SEPARATOR . 'im.png');
+    }
+
+    /**
+     * Test should compress and crop jpg image using ImageMagickLibrary.
+     *
+     * @return void
+     */
+    public function testShouldCompressAndCropJPGImageImageMagickLibrary()
+    {
+        $imager = new Imager([
+            'library' => 'im',
+            'fileInfo' => [
+                'src' => __DIR__ . DIRECTORY_SEPARATOR . 'test.jpg',
+                'to' => __DIR__ . DIRECTORY_SEPARATOR . 'im.jpg',
+                'type' => 'jpg'
+            ]
+        ]);
+        $imager->compress(80);
+        $imager->crop([
+            'width' => 100,
+            'height' => 100,
+            'x' => 10,
+            'y' => 20
+        ]);
+        $this->assertTrue($imager->run());
+        $this->assertTrue(is_file(__DIR__ . DIRECTORY_SEPARATOR . 'im.jpg'));
+        unlink(__DIR__ . DIRECTORY_SEPARATOR . 'im.jpg');
+    }
+
+    /**
+     * Test should compress and crop gif image using ImageMagickLibrary.
+     *
+     * @return void
+     */
+    public function testShouldCompressAndCropGIFImageImageMagickLibrary()
+    {
+        $imager = new Imager([
+            'library' => 'im',
+            'fileInfo' => [
+                'src' => __DIR__ . DIRECTORY_SEPARATOR . 'test.gif',
+                'to' => __DIR__ . DIRECTORY_SEPARATOR . 'im.gif',
+                'type' => 'gif'
+            ]
+        ]);
+        $imager->compress(80);
+        $imager->crop([
+            'width' => 100,
+            'height' => 100,
+            'x' => 10,
+            'y' => 20
+        ]);
+        $this->assertTrue($imager->run());
+        $this->assertTrue(is_file(__DIR__ . DIRECTORY_SEPARATOR . 'im.gif'));
+        unlink(__DIR__ . DIRECTORY_SEPARATOR . 'im.gif');
+    }
+
+    /**
+     * Test should compress and crop webp image using ImageMagickLibrary.
+     *
+     * @return void
+     */
+    public function testShouldCompressAndCropWEBPImageImageMagickLibrary()
+    {
+        $imager = new Imager([
+            'library' => 'im',
+            'fileInfo' => [
+                'src' => __DIR__ . DIRECTORY_SEPARATOR . 'test.webp',
+                'to' => __DIR__ . DIRECTORY_SEPARATOR . 'im.webp',
+                'type' => 'webp'
+            ]
+        ]);
+        $imager->compress(80);
+        $imager->crop([
+            'width' => 100,
+            'height' => 100,
+            'x' => 10,
+            'y' => 20
+        ]);
+        $this->assertTrue($imager->run());
+        $this->assertTrue(is_file(__DIR__ . DIRECTORY_SEPARATOR . 'im.webp'));
+        unlink(__DIR__ . DIRECTORY_SEPARATOR . 'im.webp');
+    }
 }
