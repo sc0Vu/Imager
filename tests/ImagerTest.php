@@ -1,6 +1,7 @@
 <?php
 
 use LGC\Imager\Imager;
+use LGC\Imager\GDLibrary;
 
 class ImagerTest extends PHPUnit_Framework_TestCase
 {
@@ -13,6 +14,19 @@ class ImagerTest extends PHPUnit_Framework_TestCase
     {
         $imager = new Imager();
         $this->assertNull($imager->getLibrary());
+    }
+
+    /**
+     * Test should set library.
+     *
+     * @return void
+     */
+    public function testShouldSetGDImageLibrary()
+    {
+        $imager = new Imager();
+        $library = new GDLibrary();
+        $imager->setLibrary($library);
+        $this->assertEquals(get_class($imager->getLibrary()), 'LGC\Imager\GDLibrary');
     }
 
     /**
