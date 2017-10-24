@@ -13,6 +13,11 @@ notifications:
     on_success: always
     on_failure: always
 
+befor_script:
+  - pear config-set preferred_state beta
+  - pecl channel-update pecl.php.net
+  - yes | pecl install imagick
+
 script:
   -  vendor/bin/phpunit --coverage-clover=coverage.xml
 
