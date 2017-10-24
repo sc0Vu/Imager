@@ -14,9 +14,7 @@ notifications:
     on_failure: always
 
 befor_script:
-  - pear config-set preferred_state beta
-  - pecl channel-update pecl.php.net
-  - yes | pecl install imagick
+  - ./spec/travis.sh
 
 script:
   -  vendor/bin/phpunit --coverage-clover=coverage.xml
