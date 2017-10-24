@@ -62,6 +62,16 @@ class ImageLibrary
     }
 
     /**
+     * get command options
+     *
+     * @return array
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
      * init
      *
      * @return void

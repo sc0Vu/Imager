@@ -2,6 +2,8 @@
 
 namespace LGC\Imager;
 
+use LGC\Imager\ImageLibrary;
+
 class Imager
 {
     /**
@@ -51,7 +53,7 @@ class Imager
      * @param \LGC\Imager\ImageLibrary $library
      * @return $this
      */
-    public function setLibrary($library)
+    public function setLibrary(ImageLibrary $library)
     {
         $this->library = $library;
         return $this;
@@ -67,7 +69,7 @@ class Imager
     public function compress($quality)
     {
         if ($this->library) {
-            return $this->library->compress($quailty);
+            return $this->library->compress($quality);
         }
         return false;
     }
@@ -81,7 +83,7 @@ class Imager
     public function crop($cropInfo)
     {
         if ($this->library) {
-            return $this->library->compress($cropInfo);
+            return $this->library->crop($cropInfo);
         }
         return false;
     }

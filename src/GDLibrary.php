@@ -30,8 +30,14 @@ class GDLibrary extends ImageLibrary implements ImageLibraryInterface
     {
         $quality = (int) $quality;
 
-        if ($quality > 100 || $quality < 0) {
-            throw new ImagerException('Compress quality must between 0 and 100.');
+        if ($this->fileType === 'png') {
+            if ($quality > 9 || $quality < -1) {
+                throw new ImagerException('PNG compress quality must between 0 and 9.');
+            }
+        } else {
+            if ($quality > 100 || $quality < -1) {
+                throw new ImagerException('Compress quality must between 0 and 100.');
+            }
         }
         $this->options['compress'] = $quality;
 
